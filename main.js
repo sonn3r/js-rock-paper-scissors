@@ -10,7 +10,7 @@ let isAutoPlaying = false;
 let intervalId;
 function autoPlay() {
     if (!isAutoPlaying) {
-         intervalId = setInterval(function() {
+         intervalId = setInterval(() => {
             const playerMove = pickComputerMove();
             playGame(playerMove);
         }, 1000);
@@ -23,7 +23,6 @@ function autoPlay() {
 function playGame(playerMove) {
     const computerMove = pickComputerMove();
     let result = '';
-
 
     if (playerMove === 'scissors') {
         if (computerMove === 'rock') {
@@ -69,8 +68,8 @@ function playGame(playerMove) {
 
     document.querySelector('.js-moves')
         .innerHTML =
-        `You picked <img src="images/${playerMove}-emoji.png" class="move-icon"> <br>
-         Computer picked <img src="images/${computerMove}-emoji.png" class="move-icon">`
+        `You picked <img src="images/${playerMove}-emoji.png" class="move-icon" alt="playerMove"> <br>
+         Computer picked <img src="images/${computerMove}-emoji.png" class="move-icon" alt="computerMove">`
 
     updateScoreElement();
 }
