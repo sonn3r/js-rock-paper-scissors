@@ -21,6 +21,9 @@ function autoPlay() {
     }
 }
 
+document.querySelector('.auto-play-button')
+    .addEventListener('click', autoPlay);
+
 document.querySelector('.js-rock-button')
     .addEventListener('click', () => {
         playGame('rock');
@@ -119,3 +122,12 @@ function pickComputerMove() {
     console.log(computerMove);
     return computerMove;
 }
+
+document.querySelector('.reset-score-button')
+    .addEventListener('click', () => {
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        localStorage.removeItem('score');
+        updateScoreElement();
+    })
