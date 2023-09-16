@@ -15,14 +15,16 @@ function autoPlay() {
             playGame(playerMove);
         }, 1000);
         isAutoPlaying = true;
+        autoPlayButton.innerHTML = 'Stop Playing';
     } else {
         clearInterval(intervalId);
         isAutoPlaying = false;
+        autoPlayButton.innerHTML = 'Auto Play';
     }
 }
 
-document.querySelector('.auto-play-button')
-    .addEventListener('click', autoPlay);
+let autoPlayButton = document.querySelector('.auto-play-button');
+    autoPlayButton.addEventListener('click', autoPlay);
 
 document.querySelector('.js-rock-button')
     .addEventListener('click', () => {
@@ -46,6 +48,8 @@ document.body.addEventListener('keydown', (event) => {
         playGame('paper');
     } else if (event.key === 's') {
         playGame('scissors');
+    } else if (event.key === 'a') {
+        autoPlay();
     }
 })
 
