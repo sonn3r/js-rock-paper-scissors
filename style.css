@@ -44,3 +44,43 @@ body {
 .js-score {
     margin-top: 75px;
 }
+
+/* Style the confirmation container */
+#confirmation-container {
+    margin: 50px;
+    text-align: center;
+    padding: 10px;
+    display: none; /* Initially hidden */
+    z-index: 999; /* Ensures the message is on top of other content */
+}
+
+/* Style the Confirm and Cancel buttons (optional) */
+#buttons {
+    margin-top: 10px;
+}
+
+#confirm-button, #cancel-button {
+    margin: 5px;
+    padding: 5px 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#confirm-button {
+    background: green;
+}
+
+#confirm-button:hover {
+    background: darkgreen;
+}
+
+#cancel-button {
+    background: darkred;
+}
+
+#cancel-button:hover {
+    background: #690000;
+}
+
+

@@ -50,8 +50,47 @@ document.body.addEventListener('keydown', (event) => {
         playGame('scissors');
     } else if (event.key === 'a') {
         autoPlay();
+    } else if (event.key === 'Backspace') {
+        resetScore();
     }
 })
+
+function resetScore() {
+    // Get the confirmation container and its elements
+    const confirmationContainer = document.getElementById('confirmation-container');
+    const confirmationMessage = document.getElementById('confirmation-message');
+    const confirmButton = document.getElementById('confirm-button');
+    const cancelButton = document.getElementById('cancel-button');
+
+    // Set the confirmation message text
+    confirmationMessage.textContent = 'Are you sure you want to reset the score?';
+
+    // Show the confirmation container
+    confirmationContainer.style.display = 'block';
+
+    // Add event listeners to confirm or cancel the reset
+    confirmButton.addEventListener('click', () => {
+        // Perform the reset when confirmed
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        localStorage.removeItem('score');
+        updateScoreElement();
+
+        // Hide the confirmation container
+        confirmationContainer.style.display = 'none';
+    });
+
+    cancelButton.addEventListener('click', () => {
+        // Hide the confirmation container when canceled
+        confirmationContainer.style.display = 'none';
+    });
+}
+
+let resetScoreButton = document.querySelector('.reset-score-button');
+resetScoreButton.addEventListener('click', resetScore);
+
+
 
 function playGame(playerMove) {
     const computerMove = pickComputerMove();
@@ -126,12 +165,3 @@ function pickComputerMove() {
     console.log(computerMove);
     return computerMove;
 }
-
-document.querySelector('.reset-score-button')
-    .addEventListener('click', () => {
-        score.wins = 0;
-        score.losses = 0;
-        score.ties = 0;
-        localStorage.removeItem('score');
-        updateScoreElement();
-    })
